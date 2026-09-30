@@ -27,9 +27,9 @@ export default function Page() {
           <span>verdant<span className="brand-dot">.</span></span>
         </a>
         <nav className="nav-links" aria-label="Main navigation">
-          <a href="#ritual">The ritual</a>
-          <a href="#ingredients">Ingredients</a>
-          <a href="#story">Our story</a>
+          <a href="/ritual">The ritual</a>
+          <a href="/ingredients">Ingredients</a>
+          <a href="/story">Our story</a>
         </nav>
         <button className="bag-button" onClick={() => setCheckoutOpen(true)}>
           Bag <span>{quantity}</span>

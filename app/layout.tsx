@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import './brand-pages.css'
 
 export const metadata: Metadata = {
   title: 'v0 App',
