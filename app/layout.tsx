@@ -4,9 +4,8 @@ import './globals.css'
 import './brand-pages.css'
 
 export const metadata: Metadata = {
-  title: 'v0 App',
-  description: 'Created with v0',
-  generator: 'v0.app',
+  title: 'Verdant — Feel Good, Naturally',
+  description: 'A modern botanical tonic for your daily ritual.',
   icons: {
     icon: [
       {

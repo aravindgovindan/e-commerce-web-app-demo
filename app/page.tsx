@@ -8,16 +8,18 @@ const product = {
   name: 'Verdant Tonic',
   subtitle: 'Daily adaptogen concentrate',
   price: 38,
+  bundlePrice: 99,
   description: 'A bright, botanical reset for clear energy and a grounded mind.',
 }
 
 export default function Page() {
   const [checkoutOpen, setCheckoutOpen] = useState(false)
   const [quantity, setQuantity] = useState(1)
+  const [packSize, setPackSize] = useState<1 | 3>(1)
   const [email, setEmail] = useState('')
   const [paid, setPaid] = useState(false)
 
-  const total = product.price * quantity
+  const total = (packSize === 3 ? product.bundlePrice : product.price) * quantity
 
   return (
     <main className="site-shell">
@@ -71,7 +73,8 @@ export default function Page() {
             ) : (
               <>
                 <div className="checkout-heading"><p className="eyebrow">Simple checkout</p><h2 id="checkout-title">Make it a ritual.</h2><p>One bottle, 30 bright starts.</p></div>
-                <div className="order-line"><div className="mini-product"><Image src="/verdant-tonic.png" alt="" width={78} height={78} /></div><div><strong>{product.name}</strong><span>{product.subtitle}</span></div><strong>${total}</strong></div>
+                <div className="order-line"><div className="mini-product"><Image src="/verdant-tonic.png" alt="" width={78} height={78} /></div><div><strong>{product.name}</strong><span>{packSize === 3 ? '3-pack · 90 servings' : product.subtitle}</span></div><strong>${total}</strong></div>
+                <div className="pack-options" aria-label="Choose your pack size"><button className={packSize === 1 ? 'selected' : ''} onClick={() => setPackSize(1)} type="button"><span>Single bottle</span><strong>$38</strong></button><button className={packSize === 3 ? 'selected' : ''} onClick={() => setPackSize(3)} type="button"><span>3-pack <small>Save $15</small></span><strong>$99</strong></button></div>
                 <div className="quantity-row"><span>Quantity</span><div className="quantity-control"><button onClick={() => setQuantity(Math.max(1, quantity - 1))} aria-label="Decrease quantity"><Minus size={14} /></button><span>{quantity}</span><button onClick={() => setQuantity(quantity + 1)} aria-label="Increase quantity"><Plus size={14} /></button></div></div>
                 <form onSubmit={(event) => { event.preventDefault(); setPaid(true) }}>
                   <label>Email address<input required type="email" value={email} onChange={(event) => setEmail(event.target.value)} placeholder="you@example.com" /></label>
